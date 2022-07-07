@@ -95,12 +95,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             Image.asset('${_response.weatherInfo.iconUrl}',
                                 width: 50, height: 40, fit: BoxFit.fill),
-                            /*
-                            Icon(
-                              Icons.sunny,
-                              color: Colors.pink,
-                              size: 40.0,
-                            ),*/
                             Text(
                               'Ощущается как',
                               style: DefaultTextStyle.of(context)
@@ -268,70 +262,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-
-      /*
-      LayoutBuilder(builder: (context, constraints) {
-        return Container(
-            child: Column(children: [
-          Expanded(
-              flex: 4,
-              child: Stack(fit: StackFit.expand, children: [
-                Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      image: const DecorationImage(
-                          image: AssetImage('assets/cloud_cat.png'),
-                          fit: BoxFit.fill),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        //if (_response != null)
-                        Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
-                                child: SizedBox(
-                                  height: 70.0,
-                                  width: 200,
-                                  child: TextField(
-                                      decoration:
-                                          InputDecoration(labelText: 'Город'),
-                                      textAlign: TextAlign.center),
-                                ),
-                              ),
-                              ElevatedButton(
-                                  onPressed: _search, child: Text('Найти'))
-                            ],
-                          ),
-                        ),
-                        Padding(
-                            padding: EdgeInsets.symmetric(vertical: 50),
-                            child: SizedBox(
-                              height: 200.0,
-                              child: Text(
-                                '${_response.tempInfo.temperature}°с',
-                                style: DefaultTextStyle.of(context)
-                                    .style
-                                    .apply(fontSizeFactor: 6.0),
-                              ),
-                            )),
-                        /*
-                        ElevatedButton(
-                            onPressed: _search, child: Text('Обновить'))*/
-                      ],
-                    )),
-              ])),
-          Container(
-            width: constraints.maxHeight,
-            color: Colors.white,
-            height: 100,
-          ),
-        ]));
-      }),
-      */
     );
   }
 
