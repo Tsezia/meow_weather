@@ -13,11 +13,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _cityTextController = TextEditingController();
   final _dataService = DataService();
   WeatherResponse _response = WeatherResponse(
-      cityName: 'Omsk',
-      tempInfo: TemperatureInfo(temperature: 0),
-      weatherInfo: WeatherInfo(description: '', icon: ''));
+      cityName: 'Unknown',
+      tempInfo: TemperatureInfo(temperature: 0, feelsLike: 0),
+      weatherInfo: WeatherInfo(description: '', icon: '', weatherId: 800));
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 500,
               decoration: BoxDecoration(
                 color: Colors.grey,
-                image: const DecorationImage(
-                    image: AssetImage('assets/cloud_cat.png'),
+                image: DecorationImage(
+                    image: AssetImage('${_response.weatherInfo.pictureUrl}'),
                     fit: BoxFit.fill),
               ),
               child: Column(
@@ -60,17 +61,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          Icons.sunny,
-                          color: Colors.pink,
-                          size: 40.0,
-                        ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20),
                           child: SizedBox(
                             height: 50.0,
                             width: 200,
                             child: TextField(
+                                controller: _cityTextController,
                                 decoration: InputDecoration(labelText: 'Город'),
                                 textAlign: TextAlign.center),
                           ),
@@ -82,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Padding(
                       padding: EdgeInsets.symmetric(vertical: 20),
                       child: SizedBox(
-                          height: 200.0,
+                          height: 230.0,
                           child: Column(children: [
                             Text(
                               '${_response.tempInfo.temperature}°с',
@@ -91,17 +88,31 @@ class _HomeScreenState extends State<HomeScreen> {
                                   .apply(fontSizeFactor: 5.0),
                             ),
                             Text(
-                              'Облачно',
+                              '${_response.weatherInfo.description}',
                               style: DefaultTextStyle.of(context)
                                   .style
                                   .apply(fontSizeFactor: 2.0),
                             ),
+                            Image.asset('${_response.weatherInfo.iconUrl}',
+                                width: 50, height: 40, fit: BoxFit.fill),
+                            /*
+                            Icon(
+                              Icons.sunny,
+                              color: Colors.pink,
+                              size: 40.0,
+                            ),*/
                             Text(
                               'Ощущается как',
                               style: DefaultTextStyle.of(context)
                                   .style
                                   .apply(fontSizeFactor: 1.0),
                             ),
+                            Text(
+                              '${_response.tempInfo.feelsLike}°с',
+                              style: DefaultTextStyle.of(context)
+                                  .style
+                                  .apply(fontSizeFactor: 2.0),
+                            )
                           ]))),
                 ],
               )),
@@ -364,7 +375,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _search() async {
-    final response = await _dataService.getWeather('Omsk');
+    final response = await _dataService.getWeather(_cityTextController.text);
     setState(() => _response = response);
   }
 }

@@ -66,6 +66,7 @@ flutter:
     - assets/rain_cat.png
     - assets/storm_cat.png
     - assets/snow_cat.png
+    - assets/icon/
   
 
   # An image asset can refer to one or more resolution-specific "variants", see

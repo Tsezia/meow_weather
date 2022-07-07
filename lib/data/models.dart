@@ -49,24 +49,74 @@
 class WeatherInfo {
   final String description;
   final String icon;
+  final int weatherId;
 
-  WeatherInfo({required this.description, required this.icon});
+  String get pictureUrl {
+    if (this.weatherId < 300) {
+      return 'assets/storm_cat.png';
+    } else if (this.weatherId < 400) {
+      return 'assets/rain_cat.png';
+    } else if (this.weatherId < 600) {
+      return 'assets/rain_cat.png';
+    } else if (this.weatherId < 700) {
+      return 'assets/snow_cat.png';
+    } else if (this.weatherId < 800) {
+      return 'assets/cloud_cat.png';
+    } else if (this.weatherId == 800) {
+      return 'assets/sun_cat.png';
+    } else if (this.weatherId <= 804) {
+      return 'assets/cloud_cat.png';
+    } else {
+      return 'assets/sun_cat.png';
+    }
+  }
+
+  String get iconUrl {
+    if (this.weatherId < 300) {
+      return 'assets/icon/Storm_Icone.png';
+    } else if (this.weatherId < 400) {
+      return 'assets/icon/Rain_Icone.png';
+    } else if (this.weatherId < 600) {
+      return 'assets/icon/Rain_Icone.png';
+    } else if (this.weatherId < 700) {
+      return 'assets/icon/Snow_Icone.png';
+    } else if (this.weatherId < 800) {
+      return 'assets/icon/Cloud_icone1.png';
+    } else if (this.weatherId == 800) {
+      return 'assets/icon/Sun_Icone.png';
+    } else if (this.weatherId <= 802) {
+      return 'assets/icon/Cloud_Icone1.png';
+    } else if (this.weatherId <= 804) {
+      return 'assets/icon/Cloud_Icone2.png';
+    } else {
+      return 'assets/icon/Sun_Down_Icone.png';
+    }
+  }
+
+  WeatherInfo(
+      {required this.description, required this.icon, required this.weatherId});
 
   factory WeatherInfo.fromJson(Map<String, dynamic> json) {
     final description = json['description'];
     final icon = json['icon'];
-    return WeatherInfo(description: description, icon: icon);
+    final weatherId = json['id'];
+    return WeatherInfo(
+        description: description, icon: icon, weatherId: weatherId.toInt());
   }
 }
 
 class TemperatureInfo {
-  final double temperature;
+  final int temperature;
+  final int feelsLike;
 
-  TemperatureInfo({required this.temperature});
+  TemperatureInfo({required this.temperature, required this.feelsLike});
 
   factory TemperatureInfo.fromJson(Map<String, dynamic> json) {
     final temperature = json['temp'];
-    return TemperatureInfo(temperature: temperature);
+    final feelsLike = json['feels_like'];
+
+    return TemperatureInfo(
+        temperature: temperature.toInt(), feelsLike: feelsLike.toInt());
   }
 }
 
@@ -74,10 +124,6 @@ class WeatherResponse {
   final String cityName;
   final TemperatureInfo tempInfo;
   final WeatherInfo weatherInfo;
-
-  String get iconUrl {
-    return 'https://openweathermap.org/img/wn/${weatherInfo.icon}@2x.png';
-  }
 
   WeatherResponse(
       {required this.cityName,
@@ -97,3 +143,7 @@ class WeatherResponse {
         cityName: cityName, tempInfo: tempInfo, weatherInfo: weatherInfo);
   }
 }
+/*
+class ForecastResponce{
+  final 
+}*/
