@@ -157,25 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: Colors.white,
                           )),
                     )),
-              ])
-
-              /*
-              child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  physics: BouncingScrollPhysics(),
-                  child: Row(children: [
-                    (
-                        height: 50,
-                        width: 20,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                        )),
-                    Text('Какой-то текст'),
-                    Text('Какой-то текст'),
-                    Text('Какой-то текст'),
-                  ]))
-              */
-              ),
+              ])),
           Container(
             height: 230,
             color: Colors.white,
@@ -185,121 +167,100 @@ class _HomeScreenState extends State<HomeScreen> {
                 Column(children: [
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 2),
-                    child: Icon(
-                      Icons.sunny,
-                      color: Colors.pink,
-                      size: 24.0,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 3),
-                    child: Icon(
-                      Icons.cloud,
-                      color: Colors.grey,
-                      size: 24.0,
-                    ),
+                    child: Image.asset('assets/icon/Sun_Icone.png',
+                        width: 25, height: 25, fit: BoxFit.fill),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 2),
-                    child: Icon(
-                      Icons.beach_access,
-                      color: Colors.blue,
-                      size: 24.0,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 3),
-                    child: Icon(
-                      Icons.sunny,
-                      color: Colors.pink,
-                      size: 24.0,
-                    ),
+                    child: Image.asset('assets/icon/Cloud_icone1.png',
+                        width: 30, height: 25, fit: BoxFit.fill),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 2),
-                    child: Icon(
-                      Icons.sunny,
-                      color: Colors.pink,
-                      size: 24.0,
-                    ),
+                    child: Image.asset('assets/icon/Rain_Icone.png',
+                        width: 25, height: 25, fit: BoxFit.fill),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 2),
-                    child: Icon(
-                      Icons.sunny,
-                      color: Colors.pink,
-                      size: 24.0,
-                    ),
+                    child: Image.asset('assets/icon/Sun_Icone.png',
+                        width: 25, height: 25, fit: BoxFit.fill),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 2),
-                    child: Icon(
-                      Icons.sunny,
-                      color: Colors.pink,
-                      size: 24.0,
-                    ),
+                    child: Image.asset('assets/icon/Storm_Icone.png',
+                        width: 25, height: 25, fit: BoxFit.fill),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 2),
+                    child: Image.asset('assets/icon/Cloud_Icone2.png',
+                        width: 30, height: 20, fit: BoxFit.fill),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 2),
+                    child: Image.asset('assets/icon/Sun_Icone.png',
+                        width: 25, height: 25, fit: BoxFit.fill),
                   ),
                 ]),
                 Column(
                   children: [
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                      child: Text('Какой-то текст'),
+                      child: Text('Ясно'),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                      child: Text('Какой-то текст'),
+                      child: Text('Переменная блачность'),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                      child: Text('Какой-то текст'),
+                      child: Text('Дождь'),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                      child: Text('Какой-то текст'),
+                      child: Text('Ясно'),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                      child: Text('Какой-то текст'),
+                      child: Text('Гроза, местами ливень'),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                      child: Text('Какой-то текст'),
+                      child: Text('Облачно, местами дождь'),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                      child: Text('Какой-то текст'),
+                      child: Text('Ясно'),
                     ),
                   ],
                 ),
                 Column(children: [
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 5),
-                    child: Text('18/28'),
+                    child: Text('18/28°с'),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                    child: Text('11/23'),
+                    child: Text('11/23°с'),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 5),
-                    child: Text('11/19'),
+                    child: Text('11/19°с'),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 5),
-                    child: Text('18/28'),
+                    child: Text('18/28°с'),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 5),
-                    child: Text('11/23'),
+                    child: Text('11/23°с'),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 5),
-                    child: Text('11/19'),
+                    child: Text('11/19°с'),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 5),
-                    child: Text('11/19'),
+                    child: Text('11/19°с'),
                   ),
                 ])
               ]),
