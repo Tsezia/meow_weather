@@ -28,12 +28,14 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('Meow Weather'),
         centerTitle: true,
         actions: [
+          /*
           IconButton(
             onPressed: () {
               Navigator.pushNamed(context, '/location');
             },
             icon: Icon(Icons.place),
           ),
+          */
           IconButton(
             onPressed: () {
               Navigator.pushNamed(context, '/setting');
@@ -77,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20),
+                      padding: EdgeInsets.symmetric(vertical: 10),
                       child: SizedBox(
                           height: 230.0,
                           child: Column(children: [
@@ -121,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 100,
                       width: 50,
                       color: Colors.green,
-                      child: Text('34%',
+                      child: Text('34°с',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.white,
@@ -133,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 100,
                       width: 50,
                       color: Colors.green,
-                      child: Text('34%',
+                      child: Text('34°с',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.white,
@@ -145,7 +147,67 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 100,
                       width: 50,
                       color: Colors.green,
-                      child: Text('34%',
+                      child: Text('34°с',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                          )),
+                    )),
+                Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                    child: Container(
+                      height: 100,
+                      width: 50,
+                      color: Colors.green,
+                      child: Text('34°с',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                          )),
+                    )),
+                Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                    child: Container(
+                      height: 100,
+                      width: 50,
+                      color: Colors.green,
+                      child: Text('34°с',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                          )),
+                    )),
+                Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                    child: Container(
+                      height: 100,
+                      width: 50,
+                      color: Colors.green,
+                      child: Text('34°с',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                          )),
+                    )),
+                Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                    child: Container(
+                      height: 100,
+                      width: 50,
+                      color: Colors.green,
+                      child: Text('34°с',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                          )),
+                    )),
+                Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                    child: Container(
+                      height: 100,
+                      width: 50,
+                      color: Colors.green,
+                      child: Text('34°с',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.white,

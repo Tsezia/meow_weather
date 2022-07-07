@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         '/': (_) => MainScreen(),
         '/homes': (_) => HomeScreen(),
         '/setting': (_) => SettingScreen(),
-        '/location': (_) => LocationScreen(),
+        //'/location': (_) => LocationScreen(),
       },
     );
   }
@@ -38,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
   int currentIndex = 0;
   final screens = [
     HomeScreen(),
-    LocationScreen(),
+    //LocationScreen(),
     SettingScreen(),
   ];
 
@@ -55,10 +55,12 @@ class _MainScreenState extends State<MainScreen> {
             icon: Icon(Icons.bar_chart),
             label: 'Прогноз',
           ),
+          /*
           BottomNavigationBarItem(
             icon: Icon(Icons.place),
             label: 'Выбрать место',
           ),
+          */
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Настройки',
