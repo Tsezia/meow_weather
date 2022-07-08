@@ -232,9 +232,9 @@ class FCResponse {
     _timezone = json['city']['timezone'];
     for (var rec in json['list']) {
       timeTab.add(_getTime(rec['dt']));
-      tempTab[0].add(rec['main']['temp']);
-      tempTab[1].add(rec['main']['temp_min']);
-      tempTab[2].add(rec['main']['temp_max']);
+      tempTab[0].add((rec['main']['temp']).toDouble());
+      tempTab[1].add((rec['main']['temp_min']).toDouble());
+      tempTab[2].add((rec['main']['temp_max']).toDouble());
     }
 
     return FCResponse(tempTab: tempTab, timeTab: timeTab);
