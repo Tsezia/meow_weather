@@ -32,10 +32,9 @@ class DataService {
     }
   }
 }
-/*
+
 class ForecastService {
   Future<ForecastResponse> getWeather(String city, int castNum) async {
-    
     final queryParameters = {
       'q': city,
       'appid': 'ef6c8587dd6f50fca77bd0278365f313',
@@ -55,8 +54,35 @@ class ForecastService {
     if (json['cod'] == 200) {
       return ForecastResponse.fromJson(json);
     } else {
-      return null;
+      return ForecastResponse.nullCast();
     }
   }
 }
-*/
+
+class FCService {
+  Future<FCResponse> getWeather(String city, int castNum) async {
+    final queryParameters = {
+      'q': city,
+      'appid': 'ef6c8587dd6f50fca77bd0278365f313',
+      'units': 'metric',
+      'lang': 'ru',
+      'cnt': '7'
+    };
+
+    final uri = Uri.https(
+        'api.openweathermap.org', '/data/2.5/forecast', queryParameters);
+
+    final response = await http.get(uri);
+
+    //print(response.body);
+    final json = jsonDecode(response.body);
+
+    if (json['cod'] == '200') {
+      //print('Ok');
+      return FCResponse.fromJson(json);
+    } else {
+      //print('Not Ok');
+      return FCResponse.nullCast();
+    }
+  }
+}

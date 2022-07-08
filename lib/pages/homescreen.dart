@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meow_weather/pages/LocationScreen.dart';
 import 'package:meow_weather/pages/settingsscreen.dart';
 import 'package:meow_weather/data/data_service.dart';
+import 'package:flutter_charts/flutter_charts.dart';
 
 import 'package:meow_weather/data/models.dart';
 
@@ -15,6 +16,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final _cityTextController = TextEditingController();
   final _dataService = DataService();
+  final _fcService = FCService();
+  FCResponse _fcResponse = FCResponse.nullCast();
   WeatherResponse _response = WeatherResponse(
       cityName: 'Unknown',
       tempInfo: TemperatureInfo(temperature: 0, feelsLike: 0),
@@ -112,108 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ]))),
                 ],
               )),
-          Container(
-              height: 200,
-              color: Colors.white,
-              child:
-                  ListView(scrollDirection: Axis.horizontal, children: <Widget>[
-                Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-                    child: Container(
-                      height: 100,
-                      width: 50,
-                      color: Colors.green,
-                      child: Text('34°с',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                          )),
-                    )),
-                Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-                    child: Container(
-                      height: 100,
-                      width: 50,
-                      color: Colors.green,
-                      child: Text('34°с',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                          )),
-                    )),
-                Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-                    child: Container(
-                      height: 100,
-                      width: 50,
-                      color: Colors.green,
-                      child: Text('34°с',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                          )),
-                    )),
-                Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-                    child: Container(
-                      height: 100,
-                      width: 50,
-                      color: Colors.green,
-                      child: Text('34°с',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                          )),
-                    )),
-                Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-                    child: Container(
-                      height: 100,
-                      width: 50,
-                      color: Colors.green,
-                      child: Text('34°с',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                          )),
-                    )),
-                Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-                    child: Container(
-                      height: 100,
-                      width: 50,
-                      color: Colors.green,
-                      child: Text('34°с',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                          )),
-                    )),
-                Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-                    child: Container(
-                      height: 100,
-                      width: 50,
-                      color: Colors.green,
-                      child: Text('34°с',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                          )),
-                    )),
-                Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-                    child: Container(
-                      height: 100,
-                      width: 50,
-                      color: Colors.green,
-                      child: Text('34°с',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                          )),
-                    )),
-              ])),
+          Container(height: 200, color: Colors.white, child: chartToRun()),
           Container(
             height: 230,
             color: Colors.white,
@@ -228,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 2),
-                    child: Image.asset('assets/icon/Cloud_icone1.png',
+                    child: Image.asset('assets/icon/Cloud_Icone1.png',
                         width: 30, height: 25, fit: BoxFit.fill),
                   ),
                   Padding(
@@ -329,6 +231,40 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _search() async {
     final response = await _dataService.getWeather(_cityTextController.text);
-    setState(() => _response = response);
+    final castResponse =
+        await _fcService.getWeather(_cityTextController.text, 7);
+    //print(castResponse.tempTab);
+
+    setState(() {
+      _response = response;
+      _fcResponse = castResponse;
+    });
+  }
+
+  Widget chartToRun() {
+    LabelLayoutStrategy? xContainerLabelLayoutStrategy;
+    ChartData chartData;
+    ChartOptions chartOptions = const ChartOptions();
+    // Example with side effects cannot be simply pasted to your code, as the _ExampleSideEffects is private
+    // This example shows the result with sufficient space to show all labels, but not enough to be horizontal;
+    // The iterative layout strategy makes the labels to tilt but show fully.
+    chartData = ChartData(
+      dataRows: [_fcResponse.tempTab[0]],
+      xUserLabels: _fcResponse.timeTab,
+      dataRowsLegends: [_fcResponse.nameTab[0]],
+      chartOptions: chartOptions,
+    );
+    //exampleSideEffects = _ExampleSideEffects()..leftSqueezeText='>>'.. rightSqueezeText='<' * 3;
+    var verticalBarChartContainer = VerticalBarChartTopContainer(
+      chartData: chartData,
+      xContainerLabelLayoutStrategy: xContainerLabelLayoutStrategy,
+    );
+
+    var verticalBarChart = VerticalBarChart(
+      painter: VerticalBarChartPainter(
+        verticalBarChartContainer: verticalBarChartContainer,
+      ),
+    );
+    return verticalBarChart;
   }
 }
